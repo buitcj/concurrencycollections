@@ -5,12 +5,12 @@ import java.util.concurrent.ConcurrentHashMap;
 public class ConcurrentCollectionTask {
 	
 	public static int NUM_THREADS = 1000;
+	public static int NUM_ITERATIONS = 1000000;
 	
 	public static class ReadUpdateWrite implements Runnable {
 		
 		ConcurrentHashMap<Integer, Integer> map;
 		int threadId;
-		public static int NUM_ITERATIONS = 1000000;
 		
 		ReadUpdateWrite(ConcurrentHashMap<Integer, Integer> m, int threadId) {
 			this.map = m;
@@ -57,7 +57,7 @@ public class ConcurrentCollectionTask {
 		long end = System.currentTimeMillis();
 		
 		System.out.println("Work took: " + (end - start) / 1000D);
-		
+		System.out.println("NumThreads: " + NUM_THREADS + " IterationsPerThread: " + NUM_ITERATIONS);
 		for (int key : concurrentHashMap.keySet()) {
 			System.out.println ("Key: " + key + " val: " + concurrentHashMap.get(key));
 		}

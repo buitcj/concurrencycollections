@@ -62,6 +62,16 @@ public class SynchronizedCollectionTask {
 			System.out.println ("Key: " + key + " val: " + sharedSynchronizedMap.get(key));
 		}
 		
+		/*
+		 * 
+		 * Work took: 401.38
+			NumThreads: 1000 IterationsPerThread: 1000000
+			Key: 0 val: 2197185
+			Key: 1 val: 2397587
+			Key: 2 val: 2177411
+			Key: 3 val: 2286043
+		 */
+		
 		List<Integer> unsynchronizedList = new ArrayList<Integer>();
 		List<Integer> synchronizedList = Collections.synchronizedList(unsynchronizedList);
 		
