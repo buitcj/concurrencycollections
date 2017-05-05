@@ -1,10 +1,7 @@
 package threadsafecollections.reducing;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 public class SynchronizedCollectionDemo {
@@ -24,10 +21,14 @@ public class SynchronizedCollectionDemo {
 
 		@Override
 		public void run() {
+			int key = threadId % 4;
+			this.map.putIfAbsent(key, 0);
 			for (int i = 0; i < NUM_ITERATIONS; i++) {
-				int key = threadId % 4;
-				Integer val = this.map.get(key);
-				map.put(key, val == null ? 1 : val + 1);
+				boolean wasReplaced;
+				do {
+					Integer val = this.map.get(key);
+					wasReplaced = this.map.replace(key, val, val + 1);
+				} while (!wasReplaced);
 			}
 		}
 		
@@ -64,12 +65,12 @@ public class SynchronizedCollectionDemo {
 		
 		/*
 		 * 
-		 * Work took: 401.38
+		 * Work took: 84.984
 			NumThreads: 1000 IterationsPerThread: 1000000
-			Key: 0 val: 2197185
-			Key: 1 val: 2397587
-			Key: 2 val: 2177411
-			Key: 3 val: 2286043
+			Key: 0 val: 250000000
+			Key: 1 val: 250000000
+			Key: 2 val: 250000000
+			Key: 3 val: 250000000
 		 */
 		
 		// List<Integer> unsynchronizedList = new ArrayList<Integer>();

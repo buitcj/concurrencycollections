@@ -36,7 +36,7 @@ public class UnmodifableDemo {
 			arrayList.add(1);
 		}
 		List<Integer> unmodifiableList = Collections.unmodifiableList(arrayList);
-		arrayList = null;
+		arrayList = null; // throw away the reference
 		
 		// Initialize readers
 		Thread[] readers = new Thread[NUM_THREADS];
@@ -63,7 +63,7 @@ public class UnmodifableDemo {
 		
 		/*
 		 * #Threads: 100 #ItersPerThread: 1000 InitialListSize: 1000000
-Work took: 36.792
+			Work took: 36.792
 		 */
 	}
 }

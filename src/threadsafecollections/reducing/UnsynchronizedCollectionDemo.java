@@ -20,10 +20,14 @@ public class UnsynchronizedCollectionDemo {
 
 		@Override
 		public void run() {
+			int key = threadId % 4;
+			this.map.putIfAbsent(key, 0);
 			for (int i = 0; i < NUM_ITERATIONS; i++) {
-				int key = threadId % 4;
-				Integer val = this.map.get(key);
-				map.put(key, val == null ? 1 : val + 1);
+				boolean wasReplaced;
+				do {
+					Integer val = this.map.get(key);
+					wasReplaced = this.map.replace(key, val, val + 1);
+				} while (!wasReplaced);
 			}
 		}
 		
@@ -59,12 +63,12 @@ public class UnsynchronizedCollectionDemo {
 		}
 		
 		/*
-		 * Work took: 34.296
+		 * Work took: 14.176
 			NumThreads: 1000 IterationsPerThread: 1000000
-			Key: 0 val: 10960199
-			Key: 1 val: 11832951
-			Key: 2 val: 9852383
-			Key: 3 val: 12248297
+			Key: 0 val: 199355898
+			Key: 1 val: 198536239
+			Key: 2 val: 192390738
+			Key: 3 val: 224033486
 		 */
 	}
 }

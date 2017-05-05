@@ -63,7 +63,8 @@ public class ConcurrentCollectionDemo {
 		}
 		
 		/*
-		 * Work took: 95.125
+		 * Work took: 31.871
+			NumThreads: 1000 IterationsPerThread: 1000000
 			Key: 0 val: 250000000
 			Key: 1 val: 250000000
 			Key: 2 val: 250000000
