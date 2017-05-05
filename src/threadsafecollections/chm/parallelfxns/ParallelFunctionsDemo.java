@@ -62,7 +62,7 @@ public class ParallelFunctionsDemo {
 		System.out.println("------Search For Pho-------");
 
 		String result = chm.search(ForkJoinPool.getCommonPoolParallelism(), 
-			(key, value) -> {
+			(key, value) -> { // search function returns 
 				System.out.println(Thread.currentThread().getName());
 				if ("pho".equals(key)) {
 					return value;
@@ -76,7 +76,7 @@ public class ParallelFunctionsDemo {
 
 		String result2 = chm.reduce(ForkJoinPool.getCommonPoolParallelism(), 
 			(key, value) -> {
-				System.out.println("Transform: " + Thread.currentThread().getName());
+				System.out.println("Map: " + Thread.currentThread().getName()); // Actually called a transformer
 				return key + "=" + value;
 			}, 
 
