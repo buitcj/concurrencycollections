@@ -7,7 +7,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-public class SynchronizedCollectionTask {
+public class SynchronizedCollectionDemo {
 	
 	public static int NUM_THREADS = 1000;
 	public static int NUM_ITERATIONS = 1000000;

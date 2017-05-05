@@ -2,7 +2,7 @@ package threadsafecollections.reducing;
 
 import java.util.concurrent.ConcurrentHashMap;
 
-public class ConcurrentCollectionTask {
+public class ConcurrentCollectionDemo {
 	
 	public static int NUM_THREADS = 1000;
 	public static int NUM_ITERATIONS = 1000000;

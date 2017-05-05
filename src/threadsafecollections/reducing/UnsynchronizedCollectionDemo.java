@@ -3,7 +3,7 @@ package threadsafecollections.reducing;
 import java.util.HashMap;
 import java.util.Map;
 
-public class UnsynchronizedCollectionTask {
+public class UnsynchronizedCollectionDemo {
 	
 	public static int NUM_THREADS = 1000;
 	public static int NUM_ITERATIONS = 1000000;
