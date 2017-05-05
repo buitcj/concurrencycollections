@@ -6,8 +6,8 @@ import java.util.List;
 
 public class UnmodifableDemo {
 	public static int NUM_THREADS = 100;
-	public static int NUM_ITERATIONS = 1000000;
-	public static int INITIAL_LIST_SIZE = 1000;
+	public static int NUM_ITERATIONS = 1000;
+	public static int INITIAL_LIST_SIZE = 1000000;
 
 	public static class ReaderTask implements Runnable {
 		private List<Integer> list;
@@ -62,8 +62,8 @@ public class UnmodifableDemo {
 		System.out.println("Work took: " + (end - start) / 1000D);
 		
 		/*
-		 * #Threads: 100 #ItersPerThread: 1000000 InitialListSize: 1000
-			Work took: 58.686
+		 * #Threads: 100 #ItersPerThread: 1000 InitialListSize: 1000000
+Work took: 36.792
 		 */
 	}
 }

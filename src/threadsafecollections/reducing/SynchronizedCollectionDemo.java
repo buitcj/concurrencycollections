@@ -72,24 +72,24 @@ public class SynchronizedCollectionDemo {
 			Key: 3 val: 2286043
 		 */
 		
-		List<Integer> unsynchronizedList = new ArrayList<Integer>();
-		List<Integer> synchronizedList = Collections.synchronizedList(unsynchronizedList);
+		// List<Integer> unsynchronizedList = new ArrayList<Integer>();
+		// List<Integer> synchronizedList = Collections.synchronizedList(unsynchronizedList);
 		
-		synchronizedList.add(25);
-		synchronizedList.get(0);
+		// synchronizedList.add(25);
+		// synchronizedList.get(0);
 		
-		synchronized(synchronizedList) {
-			for (Integer i : synchronizedList) {
-				System.out.println(i);
-			}
-		}
+		// synchronized(synchronizedList) {
+		// 	for (Integer i : synchronizedList) {
+		// 		System.out.println(i);
+		// 	}
+		// }
 		
-		synchronized(synchronizedList) {
-			Iterator<Integer> iter = synchronizedList.iterator();
-			while(iter.hasNext()) {
-				Integer i = iter.next();
-				System.out.println(i);
-			}
-		}
+		// synchronized(synchronizedList) {
+		// 	Iterator<Integer> iter = synchronizedList.iterator();
+		// 	while(iter.hasNext()) {
+		// 		Integer i = iter.next();
+		// 		System.out.println(i);
+		// 	}
+		// }
 	}
 }

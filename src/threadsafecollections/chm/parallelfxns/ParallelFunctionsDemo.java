@@ -88,4 +88,38 @@ public class ParallelFunctionsDemo {
 
 		System.out.println("Result: " + result2);
 	}
+
+	/*
+	Parallelism: 3
+	------For Each-------
+	key: com; value: bo; thread: main
+	key: chao; value: bo; thread: ForkJoinPool.commonPool-worker-3
+	key: bun; value: bo; thread: ForkJoinPool.commonPool-worker-1
+	key: pho; value: bo; thread: ForkJoinPool.commonPool-worker-2
+	key: mien; value: bo; thread: ForkJoinPool.commonPool-worker-2
+	key: soup; value: ga; thread: main
+	key: pizza; value: bo; thread: main
+	------Search For Pho-------
+	main
+	ForkJoinPool.commonPool-worker-3
+	ForkJoinPool.commonPool-worker-1
+	ForkJoinPool.commonPool-worker-2
+	main
+	Result: bo
+	------Reduce-------
+	Transform: main
+	Transform: main
+	Reduce: main
+	Transform: main
+	Reduce: main
+	Transform: ForkJoinPool.commonPool-worker-3
+	Transform: ForkJoinPool.commonPool-worker-1
+	Transform: ForkJoinPool.commonPool-worker-2
+	Transform: ForkJoinPool.commonPool-worker-1
+	Reduce: ForkJoinPool.commonPool-worker-1
+	Reduce: ForkJoinPool.commonPool-worker-2
+	Reduce: ForkJoinPool.commonPool-worker-2
+	Reduce: ForkJoinPool.commonPool-worker-2
+	Result: com=bo, soup=ga, pizza=bo, pho=bo, mien=bo, bun=bo, chao=bo
+	*/	
 }

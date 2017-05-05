@@ -23,11 +23,11 @@ public class ConcurrentCollectionDemo {
 			this.map.putIfAbsent(key, 0);
 			for (int i = 0; i < NUM_ITERATIONS; i++) {
 				
-				boolean replaced;
+				boolean wasReplaced;
 				do {
 					Integer val = this.map.get(key);
-					replaced = this.map.replace(key, val, val + 1);
-				} while (!replaced);
+					wasReplaced = this.map.replace(key, val, val + 1);
+				} while (!wasReplaced);
 			}
 		}
 		

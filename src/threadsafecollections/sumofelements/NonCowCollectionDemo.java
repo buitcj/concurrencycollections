@@ -47,11 +47,11 @@ public class NonCowCollectionDemo {
 		@Override
 		public void run() {
 			long count = 0;
-			for(int iter = 0; iter < NUM_ITERATIONS; iter++) {
-				for (int i = 0; i < list.size(); i++) {
-					Integer element = list.get(i);
-					if (element != null) {
-						count += element;
+
+			for (int iter = 0; iter < NUM_ITERATIONS; iter++) {
+				synchronized (list) {
+					for (int i = 0; i < list.size(); i++) {
+						count += list.get(i);
 					}
 				}
 			}
@@ -93,8 +93,8 @@ public class NonCowCollectionDemo {
 		System.out.println("Work took: " + (end - start) / 1000D);
 		
 		/*
-		 * Threads: 100 #ItersPerThread: 10000 InitialListSize: 100
-			Work took: 39.671
+		 * #Threads: 100 #ItersPerThread: 10000 InitialListSize: 100
+			Work took: 10.955
 		 */
 	}
 }

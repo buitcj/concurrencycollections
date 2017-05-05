@@ -1,6 +1,7 @@
 package threadsafecollections.sumofelements;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 public class CowCollectionDemo {
@@ -47,12 +48,10 @@ public class CowCollectionDemo {
 		@Override
 		public void run() {
 			long count = 0;
-			for(int iter = 0; iter < NUM_ITERATIONS; iter++) {
-				for (int i = 0; i < cowArrayList.size(); i++) {
-					Integer element = cowArrayList.get(i);
-					if (element != null) {
-						count += element;
-					}
+			for(int i = 0; i < NUM_ITERATIONS; i++) {
+				Iterator<Integer> iterator = cowArrayList.iterator();
+				while(iterator.hasNext()) {
+					count += iterator.next();
 				}
 			}
 			System.out.println("Thread " + threadId + " got count = " + count);
@@ -95,7 +94,9 @@ public class CowCollectionDemo {
 		
 		/*
 		 * #Threads: 100 #ItersPerThread: 10000 InitialListSize: 100
-			Work took: 0.378
+			Work took: 0.082
 		 */
+		
+		// faster by 133x
 	}
 }
